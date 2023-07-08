@@ -6,14 +6,18 @@ using UnityEngine.UI;
 
 public class PlayerCommads : MonoBehaviour
 {
-    public List<Commands> playeractions = new List<Commands>();
-    private GameObject prefab;
     int Actionnumber;
-    private void Start()
+     private List<Commands> playeractions = new List<Commands>();
+
+    [SerializeField] private GameObject IconPrefab;
+    [SerializeField] private Transform PlayerPanel;
+  
+    public void Initialize(List<Commands> actions)
     {
+        playeractions = actions;
         for (int i = 0; i < playeractions.Count; i++)
         {
-            GameObject go = prefab;//Instanciar prefab en el tranform que toca
+            GameObject go = IconPrefab;//Instanciar prefab en el tranform que toca
 
             Image icon = go.GetComponent<Image>();
             icon.sprite = playeractions[i].icon;
